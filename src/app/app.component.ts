@@ -56,6 +56,12 @@ export class AppComponent implements OnInit{
       })
     });
   }
+  resetCategory(form:any){
+    // form.value.name = this.selectedCategory.name ="";
+    // form.value.price = this.selectedCategory.status="";
+    this.changenameSave=true;
+    this.changenameUpdate=false;
+  }
 
   }
 
