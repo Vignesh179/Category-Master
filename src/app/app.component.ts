@@ -7,6 +7,8 @@ import { Category } from './category';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit{
+  changenameUpdate:any = false;
+  changenameSave:any = true;
   title = 'Category-Master';
     categories!: Category[];
     selectedCategory: Category = { id : null , name: null, status: null}
@@ -42,6 +44,8 @@ export class AppComponent implements OnInit{
   
   selectCategory(category: Category){
     this.selectedCategory = category;
+    this.changenameUpdate=true;
+    this.changenameSave=false;
   }
   
   deleteCategory(id:any){
@@ -52,5 +56,6 @@ export class AppComponent implements OnInit{
       })
     });
   }
+
   }
 
