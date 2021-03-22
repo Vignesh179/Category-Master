@@ -26,7 +26,7 @@ export class AppComponent implements OnInit{
       form.value.price = this.selectedCategory.status;
       if(this.selectedCategory && this.selectedCategory.id){
         this.apiService.updateCategory(form.value).subscribe((category: Category)=>{
-        console.log("Product updated" , category);
+        console.log("Category Master Updated" , category);
         this.apiService.readCategory().subscribe((categories: Category[])=>{
           this.categories = categories;
         })
@@ -34,7 +34,7 @@ export class AppComponent implements OnInit{
     }
     else{
       this.apiService.createCategory(form.value).subscribe((category: Category)=>{
-        console.log("Product created, ", category);
+        console.log("Category Master Created, ", category);
         this.apiService.readCategory().subscribe((categories: Category[])=>{
           this.categories = categories;
         })
@@ -50,7 +50,7 @@ export class AppComponent implements OnInit{
   
   deleteCategory(id:any){
     this.apiService.deleteCategory(id).subscribe((category: Category)=>{
-      console.log("Product deleted, ", category);
+      console.log("Category Master deleted, ", category);
       this.apiService.readCategory().subscribe((categories: Category[])=>{
         this.categories = categories;
       })
