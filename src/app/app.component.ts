@@ -6,62 +6,63 @@ import { Category } from './category';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit{
-  changenameUpdate:any = false;
-  changenameSave:any = true;
+export class AppComponent implements OnInit {
   title = 'Category-Master';
-    categories!: Category[];
-    selectedCategory: Category = { id : null , name: null, status: null}
-    constructor(private apiService: ApiService) {
-      this.apiService.readCategory().subscribe((categories: Category[])=>{
+  changenameUpdate: any = false;
+  changenameSave: any = true;
+  categories!: Category[];
+  selectedCategory: Category = { id: null, name: null, status: null }
+  constructor(private apiService: ApiService) {
+    this.apiService.readCategory().subscribe((categories: Category[]) => {
       this.categories = categories;
       console.log(this.categories);
-    }) }
-    ngOnInit()
-    {
-    }
-    createOrUpdateCategory(form:any){
-      form.value.id = this.selectedCategory.id;
-      form.value.name = this.selectedCategory.name;
-      form.value.price = this.selectedCategory.status;
-      if(this.selectedCategory && this.selectedCategory.id){
-        this.apiService.updateCategory(form.value).subscribe((category: Category)=>{
-        console.log("Category Master Updated" , category);
-        this.apiService.readCategory().subscribe((categories: Category[])=>{
+    })
+  }
+  ngOnInit() {
+  }
+  //Insert or Update
+  createOrUpdateCategory(form: any) {
+    form.value.id = this.selectedCategory.id;
+    form.value.name = this.selectedCategory.name;
+    form.value.price = this.selectedCategory.status;
+    if (this.selectedCategory && this.selectedCategory.id) {
+      this.apiService.updateCategory(form.value).subscribe((category: Category) => {
+        console.log("Category Master Updated", category);
+        this.apiService.readCategory().subscribe((categories: Category[]) => {
           this.categories = categories;
         })
       });
     }
-    else{
-      this.apiService.createCategory(form.value).subscribe((category: Category)=>{
+    else {
+      this.apiService.createCategory(form.value).subscribe((category: Category) => {
         console.log("Category Master Created, ", category);
-        this.apiService.readCategory().subscribe((categories: Category[])=>{
+        this.apiService.readCategory().subscribe((categories: Category[]) => {
           this.categories = categories;
         })
       });
     }
   }
-  
-  selectCategory(category: Category){
+  //Edit
+  selectCategory(category: Category) {
     this.selectedCategory = category;
-    this.changenameUpdate=true;
-    this.changenameSave=false;
+    this.changenameUpdate = true;
+    this.changenameSave = false;
   }
-  
-  deleteCategory(id:any){
-    this.apiService.deleteCategory(id).subscribe((category: Category)=>{
+  //Deletion
+  deleteCategory(id: any) {
+    this.apiService.deleteCategory(id).subscribe((category: Category) => {
       console.log("Category Master deleted, ", category);
-      this.apiService.readCategory().subscribe((categories: Category[])=>{
+      this.apiService.readCategory().subscribe((categories: Category[]) => {
         this.categories = categories;
       })
     });
   }
-  resetCategory(form:any){
+  //Reset
+  resetCategory(form: any) {
     // form.value.name = this.selectedCategory.name ="";
     // form.value.price = this.selectedCategory.status="";
-    this.changenameSave=true;
-    this.changenameUpdate=false;
+    this.changenameSave = true;
+    this.changenameUpdate = false;
   }
-
-  }
+}
 
