@@ -1,0 +1,42 @@
+<div class="container">
+<h1 style="text-align: center;">Category Master</h1>
+<hr>
+<div class="row">
+  <div class="col">
+<form #f = "ngForm">
+<label>Name</label>
+<input type="text" name="name" [(ngModel)] = "selectedCategory.name" class="form-control">
+<br>
+<label>Amount</label>
+<select type="text" name="status" [(ngModel)] = "selectedCategory.status" class="form-control">
+  <option>Active</option>
+  <option>Inactive</option>
+  </select>
+<br>
+<input type="button" (click)="createOrUpdateCategory(f)" value="Save" class="btn btn-success btn-lg">
+</form>
+</div>
+<br/>
+<div class="col">
+<table class="table table-striped table-bordered">
+  
+<tr>
+<th>ID</th>
+<th>Name</th>
+<th>Status</th>
+<th>Action</th>
+</tr>
+<tr *ngFor="let category of categories">
+<td>{{ category.id }}</td>
+<td>{{ category.name }}</td>
+<td>{{ category.status }}</td>
+<td>
+<button (click)="selectCategory(category)" class="btn btn-warning btn-sm">Edit</button> &nbsp;
+<button id="del" (click)="deleteCategory(category.id)" class="btn btn-danger btn-sm">Delete</button>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<router-outlet></router-outlet>
