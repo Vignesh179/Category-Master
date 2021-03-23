@@ -20,4 +20,12 @@ export class ApiService {
 	deleteCategory(id: number) {
 		return this.httpClient.delete<Category>(`${this.LOCALHOST}/delete_category.php/?id=${id}`);
 	}
+	// async get(url: string) {
+    //     try {
+    //         const resp = await this.httpClient.get(url).toPromise();
+    //         return resp;
+    //     } catch (e) {
+    //         return null;
+    //     }
+    // }
 }
