@@ -12,11 +12,11 @@ export class AppComponent implements OnInit {
   categories!: Category[];
   selectedCategory: Category = { id: null, name: null, status: null }
   constructor(private apiService: ApiService) {
-    this.apiService.readCategory().subscribe((categories: Category[]) => {
-      this.categories = categories;
-      // this.loadData();
-      // console.log(this.categories);
-    })
+    // this.apiService.readCategory().subscribe((categories: Category[]) => {
+    //   this.categories = categories;
+      this.loadData();
+    //   // console.log(this.categories);
+    // })
   }
   ngOnInit() {
   }
@@ -28,17 +28,18 @@ export class AppComponent implements OnInit {
     if (this.selectedCategory && this.selectedCategory.id) {
       this.apiService.updateCategory(form.value).subscribe(() => {
         // console.log("Category Master Updated", category);
-        this.apiService.readCategory().subscribe((categories: Category[]) => {
-          this.categories = categories;
-        })
+        // this.apiService.readCategory().subscribe((categories: Category[]) => {
+        //   this.categories = categories;
+        // })
       });
     }
     else {
       this.apiService.createCategory(form.value).subscribe(() => {
         // console.log("Category Master Created, ", category);
-        this.apiService.readCategory().subscribe((categories: Category[]) => {
-          this.categories = categories;
-        })
+        // this.apiService.readCategory().subscribe((categories: Category[]) => {
+        //   this.categories = categories;
+        this.loadData();
+        // })
       });
     }
   }
@@ -52,9 +53,10 @@ export class AppComponent implements OnInit {
   deleteCategory(id: any) {
     this.apiService.deleteCategory(id).subscribe(() => {
       // console.log("Category Master deleted, ", category);
-      this.apiService.readCategory().subscribe((categories: Category[]) => {
-        this.categories = categories;
-      })
+      // this.apiService.readCategory().subscribe((categories: Category[]) => {
+      //   this.categories = categories;
+      this.loadData();
+      // })
     });
   }
   //Reset
@@ -65,14 +67,15 @@ export class AppComponent implements OnInit {
     this.changenameSave = true;
     this.changenameUpdate = false;
   }
-  // async loadData() {
-  //   try {
-  //     let res: any = await this.apiService.get(`http://localhost/categorymaster/index.php`);
-  //     console.log('Response is ', res);
-  //     // this.categories=res;
-  //   } catch (e) {
+  async loadData() {
+    try {
+      let res: any = await this.apiService.get(`http://localhost/categorymaster/index.php`);
+      console.log('Response is ', res);
+      this.categories=res;
+    } catch (e) {
 
-  //   }
-  // }
+    }
+  }
+  
 }
 
