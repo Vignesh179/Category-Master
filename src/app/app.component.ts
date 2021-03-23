@@ -14,7 +14,7 @@ export class AppComponent implements OnInit {
   constructor(private apiService: ApiService) {
     this.apiService.readCategory().subscribe((categories: Category[]) => {
       this.categories = categories;
-      console.log(this.categories);
+      // console.log(this.categories);
     })
   }
   ngOnInit() {
@@ -25,16 +25,16 @@ export class AppComponent implements OnInit {
     form.value.name = this.selectedCategory.name;
     form.value.status = this.selectedCategory.status;
     if (this.selectedCategory && this.selectedCategory.id) {
-      this.apiService.updateCategory(form.value).subscribe((category: Category) => {
-        console.log("Category Master Updated", category);
+      this.apiService.updateCategory(form.value).subscribe(() => {
+        // console.log("Category Master Updated", category);
         this.apiService.readCategory().subscribe((categories: Category[]) => {
           this.categories = categories;
         })
       });
     }
     else {
-      this.apiService.createCategory(form.value).subscribe((category: Category) => {
-        console.log("Category Master Created, ", category);
+      this.apiService.createCategory(form.value).subscribe(() => {
+        // console.log("Category Master Created, ", category);
         this.apiService.readCategory().subscribe((categories: Category[]) => {
           this.categories = categories;
         })
@@ -49,8 +49,8 @@ export class AppComponent implements OnInit {
   }
   //Deletion
   deleteCategory(id: any) {
-    this.apiService.deleteCategory(id).subscribe((category: Category) => {
-      console.log("Category Master deleted, ", category);
+    this.apiService.deleteCategory(id).subscribe(() => {
+      // console.log("Category Master deleted, ", category);
       this.apiService.readCategory().subscribe((categories: Category[]) => {
         this.categories = categories;
       })
