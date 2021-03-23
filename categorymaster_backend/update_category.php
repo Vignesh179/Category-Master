@@ -1,24 +1,24 @@
 <?php
-require 'database.php';
-$postdata = file_get_contents('php://input');
+    
+    require 'database.php';
 
-if(isset($postdata) && !empty($postdata))
-{
-	$request = json_decode($postdata,true);
-	if (trim($request['name']) == '' || (trim($request['status'] < 0))) {
-		return http_response_code(400);
-	}
-	$id = mysqli_real_escape_string($db, (int)$request['id']);
-	$name = mysqli_real_escape_string($db, trim($request['name']));
-	$status = mysqli_real_escape_string($db, trim($request['status']));
-	$sql = "UPDATE tablecategory SET name='$name',status='$status' WHERE id = $id";
+    header('Content-type: application/json');
+	header("Access-Control-Allow-Origin: *");
+    header('Access-Control-Allow-Headers: X-Requested-With, content-type, access-control-allow-origin, access-control-allow-methods, access-control-allow-headers');
+    
+    $request_body = file_get_contents('php://input');
+    $data = json_decode($request_body);
 	
-	if($db->query($sql))
-	{
-		http_response_code(204);
-	}
-	else
-	{
-		return http_response_code(422);
-	}
-}
+	$id = $data->id;
+    $name = $data->name;
+    $status = $data->status;
+    
+    echo json_encode($request_body);
+    if(isset($data)){
+        
+    $sql = "Update tablecategory
+				SET name='$name', status='$status' WHERE id=$id";
+    $category = mysqli_query($db,$sql);
+    
+    }
+?>
