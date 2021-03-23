@@ -7,9 +7,8 @@ import { Category } from './category';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  title = 'Category-Master';
-  changenameUpdate: any = false;
-  changenameSave: any = true;
+  changenameUpdate: boolean = false;
+  changenameSave: boolean = true;
   categories!: Category[];
   selectedCategory: Category = { id: null, name: null, status: null }
   constructor(private apiService: ApiService) {
