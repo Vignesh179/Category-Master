@@ -24,7 +24,7 @@ export class AppComponent implements OnInit {
   createOrUpdateCategory(form: any) {
     form.value.id = this.selectedCategory.id;
     form.value.name = this.selectedCategory.name;
-    form.value.price = this.selectedCategory.status;
+    form.value.status = this.selectedCategory.status;
     if (this.selectedCategory && this.selectedCategory.id) {
       this.apiService.updateCategory(form.value).subscribe((category: Category) => {
         console.log("Category Master Updated", category);
