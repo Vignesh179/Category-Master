@@ -14,6 +14,7 @@ export class AppComponent implements OnInit {
   constructor(private apiService: ApiService) {
     this.apiService.readCategory().subscribe((categories: Category[]) => {
       this.categories = categories;
+      // this.loadData();
       // console.log(this.categories);
     })
   }
@@ -64,5 +65,14 @@ export class AppComponent implements OnInit {
     this.changenameSave = true;
     this.changenameUpdate = false;
   }
+  // async loadData() {
+  //   try {
+  //     let res: any = await this.apiService.get(`http://localhost/categorymaster/index.php`);
+  //     console.log('Response is ', res);
+  //     // this.categories=res;
+  //   } catch (e) {
+
+  //   }
+  // }
 }
 
