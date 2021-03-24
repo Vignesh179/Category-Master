@@ -60,13 +60,13 @@ export class AppComponent implements OnInit {
     });
   }
   //Reset
-  resetCategory(form: any) {
-    // form.value.name = this.selectedCategory.name ="";
-    // form.value.price = this.selectedCategory.status="";
-    form.reset();
-    this.changenameSave = true;
-    this.changenameUpdate = false;
-  }
+  // resetCategory(form: any) {
+  //   // form.value.name = this.selectedCategory.name ="";
+  //   // form.value.price = this.selectedCategory.status="";
+  //   form.reset();
+  //   this.changenameSave = true;
+  //   this.changenameUpdate = false;
+  // }
   async loadData() {
     try {
       let res: any = await this.apiService.get(`http://localhost/categorymaster/index.php`);
@@ -76,6 +76,11 @@ export class AppComponent implements OnInit {
 
     }
   }
+ refresh(){
+  setTimeout(() => {
+   window.location.reload(); 
+   }, 100);
+ }
   
 }
 
