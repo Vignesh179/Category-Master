@@ -14,6 +14,7 @@
           <option>Inactive</option>
         </select>
         <br>
+        <div class="btn-toolbar">
         <ng-container *ngIf="changenameSave">
           <input type="button" (click)="createOrUpdateCategory(c)" value="Save" class="btn btn-success btn-md">
         </ng-container>
@@ -22,8 +23,11 @@
         </ng-container>
         &nbsp;
         <input type="button" (click)="refresh()" value="Reset" class="btn btn-danger btn-md">
+      </div>
+        <br>
       </form>
     </div>
+  
     <div class="col">
       <!--Table-->
       <table class="table table-striped table-bordered">
@@ -40,9 +44,11 @@
           <td>{{ category.name }}</td>
           <td>{{ category.status }}</td>
           <td>
+         
             <button (click)="selectCategory(category)" class="btn btn-outline-warning btn-sm">Edit</button>
             &nbsp;
             <button (click)="deleteCategory(category.id)" class="btn btn-outline-danger btn-sm">Delete</button>
+         
           </td>
         </tr>
       </table>
