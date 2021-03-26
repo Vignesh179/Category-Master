@@ -5,8 +5,7 @@
     cursor: default;
     border-radius: 50px;
 } */
-
-
   .my-pagination /deep/ .ngx-pagination .current {
-    background: red;
+    background:black;
+    border-radius: 50px;
   }
