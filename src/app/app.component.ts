@@ -7,6 +7,7 @@ import { Category } from './category';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
+  p: number = 1;
   changenameUpdate: boolean = false;
   changenameSave: boolean = true;
   categories!: Category[];
