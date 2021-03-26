@@ -1,4 +1,6 @@
+import { convertActionBinding } from '@angular/compiler/src/compiler_util/expression_converter';
 import { Component, OnInit } from '@angular/core';
+import { NgbAlert } from '@ng-bootstrap/ng-bootstrap';
 import { ApiService } from './api.service';
 import { Category } from './category';
 @Component({
@@ -41,6 +43,7 @@ export class AppComponent implements OnInit {
         // this.apiService.readCategory().subscribe((categories: Category[]) => {
         //   this.categories = categories;
         // })
+        alert("Updated Successfully!");
       });
     }
     else {
@@ -48,6 +51,8 @@ export class AppComponent implements OnInit {
         // console.log("Category Master Created, ", category);
         // this.apiService.readCategory().subscribe((categories: Category[]) => {
         //   this.categories = categories;
+      
+        alert("Data Saved Successfully!");
         this.loadData();
         // })
       });
@@ -60,7 +65,9 @@ export class AppComponent implements OnInit {
     this.changenameSave = false;
   }
   //Deletion
+  
   deleteCategory(id: any) {
+    if(confirm("Are you sure? You want to remove the record?")){
     this.apiService.deleteCategory(id).subscribe(() => {
       // console.log("Category Master deleted, ", category);
       // this.apiService.readCategory().subscribe((categories: Category[]) => {
@@ -68,6 +75,7 @@ export class AppComponent implements OnInit {
       this.loadData();
       // })
     });
+  }
   }
   //Reset
   // resetCategory(form: any) {
@@ -78,9 +86,7 @@ export class AppComponent implements OnInit {
   //   this.changenameUpdate = false;
   // }
   refresh() {
-    setTimeout(() => {
-      window.location.reload();
-    }, 100);
+    
   }
 }
 
