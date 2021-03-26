@@ -39,7 +39,7 @@
           <th>Action</th>
         </tr>
       </thead>
-        <tr *ngFor="let category of categories">
+        <tr *ngFor="let category of categories | paginate: { itemsPerPage: 7, currentPage: p }">
           <td>{{ category.id }}</td>
           <td>{{ category.name }}</td>
           <td>{{ category.status }}</td>
@@ -52,6 +52,8 @@
           </td>
         </tr>
       </table>
+      <pagination-controls (pageChange)="p = $event" class="my-pagination"></pagination-controls >
+     
     </div>
   </div>
 </div>
