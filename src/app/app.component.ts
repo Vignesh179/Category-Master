@@ -21,6 +21,15 @@ export class AppComponent implements OnInit {
   }
   ngOnInit() {
   }
+  //Fetch
+  async loadData() {
+    try {
+      let res: any = await this.apiService.get(`http://localhost/categorymaster/index.php`);
+      console.log('Response is ', res);
+      this.categories = res;
+    } catch (e) {
+    }
+  }
   //Insert or Update
   createOrUpdateCategory(form: any) {
     form.value.id = this.selectedCategory.id;
@@ -72,15 +81,6 @@ export class AppComponent implements OnInit {
     setTimeout(() => {
       window.location.reload();
     }, 100);
-  }
-
-  async loadData() {
-    try {
-      let res: any = await this.apiService.get(`http://localhost/categorymaster/index.php`);
-      console.log('Response is ', res);
-      this.categories = res;
-    } catch (e) {
-    }
   }
 }
 
