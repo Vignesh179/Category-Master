@@ -1,0 +1,12 @@
+/* .ngx-pagination .current {
+    padding: 0.1875rem 0.625rem;
+    background: yellowgreen;
+    color: #fefefe;
+    cursor: default;
+    border-radius: 50px;
+} */
+
+
+  .my-pagination /deep/ .ngx-pagination .current {
+    background: red;
+  }
