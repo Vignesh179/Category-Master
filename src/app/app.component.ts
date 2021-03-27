@@ -38,9 +38,12 @@ export class AppComponent implements OnInit {
   }
   //Insert or Update
   createOrUpdateCategory(form: any) {
-    form.value.id = this.selectedCategory.id;
-    form.value.name = this.selectedCategory.name;
-    form.value.status = this.selectedCategory.status;
+    let fid = this.selectedCategory.id;
+    let fname =  this.selectedCategory.name;
+    let fstatus = this.selectedCategory.status;
+    form.value.id = fid;
+    form.value.name = fname;
+    form.value.status = fstatus;
     if (this.selectedCategory && this.selectedCategory.id) {
       this.apiService.updateCategory(form.value).subscribe(() => {
         // console.log("Category Master Updated", category);
@@ -56,7 +59,8 @@ export class AppComponent implements OnInit {
         // console.log("Category Master Created, ", category);
         // this.apiService.readCategory().subscribe((categories: Category[]) => {
         //   this.categories = categories;
-      
+
+
         this.alert = true; 
         form.reset();
         this.loadData();
