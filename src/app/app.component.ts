@@ -58,7 +58,6 @@ export class AppComponent implements OnInit {
         // this.apiService.readCategory().subscribe((categories: Category[]) => {
         //   this.categories = categories;
 
-
         this.alert = true; 
         form.reset();
         this.loadData();
