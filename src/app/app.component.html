@@ -20,6 +20,9 @@
         <label>Name</label>
         <input type="text" name="name" [(ngModel)]="selectedCategory.name" class="form-control">
         <br>
+        <!-- <label>Unique ID</label>
+        <input type="number" name="id" [(ngModel)]="selectedCategory.id" class="form-control">
+        <br> -->
         <label>Status</label>
         <select type="text" name="status" [(ngModel)]="selectedCategory.status" class="form-control">
           <option>Active</option>
@@ -28,13 +31,13 @@
         <br>
         <div class="btn-toolbar">
         <ng-container *ngIf="changenameSave">
-          <input type="button" (click)="createOrUpdateCategory(c)" value="Save" class="btn btn-success btn-md">
+          <input type="button" (click)="createOrUpdateCategory(c)" value="Save" class="btn btn-success btn-md" data-toggle="tooltip" title="Save Record">
         </ng-container>
         <ng-container *ngIf="changenameUpdate">
-          <input type="button" (click)="createOrUpdateCategory(c)" value="Update" class="btn btn-warning btn-md">
+          <input type="button" (click)="createOrUpdateCategory(c)" value="Update" class="btn btn-warning btn-md" data-toggle="tooltip" title="Update">
         </ng-container>
         &nbsp;
-        <input type="button" (click)="refresh(c)" value="Reset" class="btn btn-danger btn-md">
+        <input type="button" (click)="refresh(c)" value="Reset" class="btn btn-danger btn-md" data-toggle="tooltip" title="Reset">
       </div>
         <br>
       </form>
@@ -58,9 +61,9 @@
           <td>{{ category.status }}</td>
           <td>
          
-            <button (click)="selectCategory(category)" class="btn btn-outline-warning btn-sm">Edit</button>
+            <button (click)="selectCategory(category)" class="btn btn-outline-warning btn-sm" data-toggle="tooltip" title="Edit">Edit</button>
             &nbsp;
-            <button (click)="deleteCategory(category.id)" class="btn btn-outline-danger btn-sm">Delete</button>
+            <button (click)="deleteCategory(category.id)" class="btn btn-outline-danger btn-sm" data-toggle="tooltip" title="Delete">Delete</button>
          
           </td>
         </tr>
