@@ -18,6 +18,7 @@ export class AppComponent implements OnInit {
   updateMessage:boolean= false;
   categories!: Category[];
   selectedCategory: Category = { id: null, name: null, status: null }
+  formCategory: Category = { id: null, name: null, status: null }
   constructor(private apiService: ApiService) {
     // this.apiService.readCategory().subscribe((categories: Category[]) => {
     //   this.categories = categories;
@@ -38,12 +39,9 @@ export class AppComponent implements OnInit {
   }
   //Insert or Update
   createOrUpdateCategory(form: any) {
-    let fid = this.selectedCategory.id;
-    let fname =  this.selectedCategory.name;
-    let fstatus = this.selectedCategory.status;
-    form.value.id = fid;
-    form.value.name = fname;
-    form.value.status = fstatus;
+    form.value.id = this.selectedCategory.id;
+    form.value.name = this.selectedCategory.name;
+    form.value.status = this.selectedCategory.status;
     if (this.selectedCategory && this.selectedCategory.id) {
       this.apiService.updateCategory(form.value).subscribe(() => {
         // console.log("Category Master Updated", category);
@@ -71,6 +69,7 @@ export class AppComponent implements OnInit {
   //Edit
   selectCategory(category: Category) {
     this.selectedCategory = category;
+    this.formCategory = category;
     this.changenameUpdate = true;
     this.changenameSave = false;
   }
