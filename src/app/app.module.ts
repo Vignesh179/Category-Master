@@ -6,6 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import {NgxPaginationModule} from 'ngx-pagination';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,7 @@ import {NgxPaginationModule} from 'ngx-pagination';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgbModule, HttpClientModule, FormsModule, NgxPaginationModule
+    NgbModule, HttpClientModule, FormsModule, NgxPaginationModule, ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
