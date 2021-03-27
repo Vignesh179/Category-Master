@@ -11,8 +11,12 @@
     $id = $data->id;
     $name = $data->name;
     $status = $data->status;
+ 
     echo json_encode($request_body);
     if(isset($data)){
+        if($name=="" || $status==""){
+           console.log();
+        }
     $sql = "INSERT INTO tablecategory (id, name, status)
         VALUES (null,'$name','$status')";
     	$category = mysqli_query($db,$sql);
