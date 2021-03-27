@@ -15,6 +15,7 @@ export class AppComponent implements OnInit {
   changenameUpdate: boolean = false;
   changenameSave: boolean = true;
   alert:boolean = false;
+  updateMessage:boolean= false;
   categories!: Category[];
   selectedCategory: Category = { id: null, name: null, status: null }
   constructor(private apiService: ApiService) {
@@ -46,7 +47,7 @@ export class AppComponent implements OnInit {
         // this.apiService.readCategory().subscribe((categories: Category[]) => {
         //   this.categories = categories;
         // })
-         
+         this.updateMessage=true;
       });
       
     }
@@ -57,6 +58,7 @@ export class AppComponent implements OnInit {
         //   this.categories = categories;
       
         this.alert = true; 
+        form.reset();
         this.loadData();
         // })
       });
@@ -89,13 +91,16 @@ export class AppComponent implements OnInit {
   //   this.changenameSave = true;
   //   this.changenameUpdate = false;
   // }
-  refresh() {
-   
-    
+  refresh(form:any) {
+   form.reset();
+    this.loadData();
+    this.changenameSave=true;
+    this.changenameUpdate=false;
 
   }
   closeAlert(){
     this.alert=false;
+    this.updateMessage=false;
   }
 }
 
