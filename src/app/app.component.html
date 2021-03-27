@@ -19,6 +19,11 @@
       <form #c="ngForm">
         <label>Name</label>
         <input type="text" name="name" [(ngModel)]="selectedCategory.name" class="form-control">
+        <!-- <div *ngIf="dataForm.controls['name'].touched && !dataForm.controls['name'].valid">  
+          <span *ngIf="dataForm.controls['name'].hasError('required') " class="error-msg">  
+            Name is required
+          </span>  
+      </div>   -->
         <br>
         <!-- <label>Unique ID</label>
         <input type="number" name="id" [(ngModel)]="selectedCategory.id" class="form-control">
