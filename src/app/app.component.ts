@@ -63,8 +63,8 @@ export class AppComponent {
       console.log('Response is ', res);
       this.categories = res;
     } catch (e) {
-      alert("Error in GET..please wait or Re-check your connection..")
-      console.log('the error in get ', e);
+      alert("Fetch error")
+      console.log('Error', e);
     }
   }
 //Delete
