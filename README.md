@@ -8,4 +8,4 @@
 
 ### Npm install
 
-### ng serve
+### ng serve --open
