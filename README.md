@@ -9,3 +9,5 @@
 ### Npm install
 
 ### ng serve --open
+
+### Note: Copy the backend files to htdocs
