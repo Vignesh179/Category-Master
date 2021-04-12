@@ -15,6 +15,7 @@ export class AppComponent {
   SaveButton: any;
   UpdateButton: any;
   id: any;
+  title:any;
   categories: any = [];
   alert:boolean = false;
   updateMessage:boolean= false;
